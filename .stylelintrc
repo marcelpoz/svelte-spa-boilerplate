@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "stylelint-config-recommended-scss",
+    "stylelint-config-rational-order"
+  ],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-a11y",
+    "stylelint-prettier",
+  ],
+  "rules": {
+    "no-descending-specificity": null,
+    "indentation": 2,
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "unit-whitelist": [["px", "rem", "%", "s", "deg", "vh", "vw"], { "severity": "warning" }],
+    "a11y/no-outline-none": true,
+    "a11y/selector-pseudo-class-focus": true,
+    "a11y/font-size-is-readable": [true, { "severity": "warning" }],
+    "a11y/no-spread-text": [true, { "severity": "warning" }],
+    "a11y/no-obsolete-attribute": [true, { "severity": "warning" }],
+    "a11y/no-obsolete-element": [true, { "severity": "warning" }],
+    "prettier/prettier": true
+  }
+}
