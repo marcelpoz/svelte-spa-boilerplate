@@ -1,0 +1,20 @@
+html {
+  font-size: $base-rem;
+  font-family: $base-font-family;
+}
+
+body {
+  font-size: $base-font-size;
+}
+
+button {
+  @include btn-reset;
+  padding: 1rem;
+  color: white;
+  background-color: rgba(black, 0.5);
+
+  &:hover,
+  &:focus {
+    background-color: rgba(black, 1);
+  }
+}

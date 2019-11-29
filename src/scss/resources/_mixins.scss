@@ -1,0 +1,78 @@
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  position: $pos;
+  display: $display;
+  content: $content;
+}
+
+// Put an aspect ratio on items
+// usage: @include aspect-ratio(4,3);
+@mixin aspect-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + '%');
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+// Make element match client boundaries of its parent
+// usage: @include fit-boundaries();
+@mixin fit-boundaries() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  font-family: 'object-fit: cover', sans-serif; // IE11 polyfill
+}
+
+@mixin btn-reset {
+  display: inline-block;
+  box-sizing: border-box;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  appearance: none;
+  user-select: none;
+
+  &[disabled] {
+    text-shadow: none;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* stylelint-disable */
+  &:focus {
+    outline: none;
+  }
+  /* stylelint-enable */
+}
+
+@mixin headings-all {
+  @for $i from 1 through 6 {
+    h#{$i},
+    .h#{$i} {
+      @content;
+    }
+  }
+}
