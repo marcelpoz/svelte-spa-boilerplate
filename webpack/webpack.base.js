@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const path = require('path');
 
 // Plugins
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -50,6 +51,9 @@ module.exports = env => {
       ],
     },
     plugins: [
+      new CleanWebpackPlugin({
+        cleanStaleWebpackAssets: !!env.prod,
+      }),
       new HtmlWebpackPlugin({
         template: `${srcDir}/index.html`,
         filename: `${distDir}/index.html`,
