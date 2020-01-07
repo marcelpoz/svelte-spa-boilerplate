@@ -41,11 +41,6 @@ module.exports = env => {
           messages: [
             chalk.hex('#ffa500')('🎉   Check out your svelte app here  👉🏻  http://localhost:3000'),
           ],
-          notes: [
-            chalk.white(
-              '🚀   Bundled assets can be found here  👉🏻  /web/themes/custom/football_foundation/assets'
-            ),
-          ],
         },
       }),
       new HardSourceWebpackPlugin(),
