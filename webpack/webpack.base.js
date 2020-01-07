@@ -52,7 +52,7 @@ module.exports = env => {
     },
     plugins: [
       new CleanWebpackPlugin({
-        cleanStaleWebpackAssets: !!env.prod,
+        cleanStaleWebpackAssets: env.prod,
       }),
       new HtmlWebpackPlugin({
         template: `${srcDir}/index.html`,
@@ -75,7 +75,7 @@ module.exports = env => {
         svelte: path.resolve('node_modules', 'svelte'),
       },
       cacheWithContext: false,
-      extensions: ['.js', '.jsx', '.svelte'],
+      extensions: ['.mjs', '.js', '.jsx', '.svelte'],
     },
   };
 };
